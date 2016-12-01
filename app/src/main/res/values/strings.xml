@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Translator</string>
+    <string name="translate">Перевести</string>
+    <string name="yandex_sevice">«Переведено сервисом «Яндекс.Переводчик»</string>
 </resources>

@@ -1,15 +1,24 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+
+    repositories {
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
     defaultConfig {
         applicationId "com.andrey.translator"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        buildConfigField 'String', 'HOST', '"https://translate.yandex.net/api/v1.5/tr.json/"'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -18,12 +27,29 @@ android {
         }
     }
 }
+ext{
+    butterknifeVersion = '8.4.0'
+    supportLibraryVersion = '25.0.1'
+    retrofitVersion = '2.1.0'
+    okHttp3Version = '3.4.1'
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    testCompile 'junit:junit:4.12'
+
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$supportLibraryVersion"
+    compile "com.android.support:design:$supportLibraryVersion"
+
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    
 }
