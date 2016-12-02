@@ -15,11 +15,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andrey.translator.R;
+import com.andrey.translator.model.TranslateEngine;
+import com.andrey.translator.net.API;
+import com.andrey.translator.net.Method;
+import com.andrey.translator.net.ResponseError;
+import com.andrey.translator.net.retrofit.ResponseItem;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by Andrey Antonenko on 01.12.2016.
@@ -44,25 +50,17 @@ public class TranslateFragment extends Fragment {
     @BindView(R.id.yandex_service)
     TextView yandexService;
 
-    private Unbinder unbinder;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.translator_layout, container, false);
-        unbinder = ButterKnife.bind(this, rootView);
+        ButterKnife.bind(this, rootView);
         return rootView;
     }
 
     @OnClick(R.id.yandex_service)
-    public void openYandexService(){
+    public void openYandexService() {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://translate.yandex.ru"));
         startActivity(browserIntent);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        unbinder.unbind();
     }
 }

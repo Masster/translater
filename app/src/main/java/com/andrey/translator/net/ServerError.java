@@ -8,6 +8,7 @@ public enum ServerError {
     UNKNOWN_ERROR(0),//Неизвестная ошибка
     NO_CONNECTION(0),//Нет Интернета
     NO_ERROR(200),//Операция выполнена успешно
+    BAD_REQUEST(400),
     WRONG_API_KEY(401),//Неправильный API-ключ
     BLOCKED_API_KEY(402),//API-ключ заблокирован
     DAILY_LIMIT_EXCEEDED(404),//Превышено суточное ограничение на объем переведенного текста

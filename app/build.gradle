@@ -17,6 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField 'String', 'HOST', '"https://translate.yandex.net/api/v1.5/tr.json/"'
+        buildConfigField 'String', 'API_KEY', '"trnsl.1.1.20161125T100649Z.df2ce08cc48207c7.7bd4f74fd508223be734e8f537896f61da273eff"'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -42,6 +43,9 @@ dependencies {
 
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    compile "com.squareup.okhttp3:okhttp:$okHttp3Version"
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttp3Version"
 
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "com.android.support:recyclerview-v7:$supportLibraryVersion"

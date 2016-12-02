@@ -1,24 +1,23 @@
 package com.andrey.translator.net;
 
+import com.andrey.translator.net.retrofit.ListItemResponse;
+import com.andrey.translator.net.retrofit.SingleItemResponse;
+
 import retrofit2.Call;
-import retrofit2.http.Field;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by Andrey Antonenko on 02.12.2016.
  */
 
 public interface ServerAPI {
-    //getLangs?key=<API-ключ>&ui=<код языка>
-    //detect?key=<API-ключ>&text=<текст>
-    //translate?key=<API-ключ>&text=<переводимый текст>&lang=<направление перевода>
-
     @POST("getLangs")
-    Call getLangs(@Field("key") String key, @Field("ui") String ui);
+    Call<ListItemResponse> getLangs(@Query("key") String key, @Query("ui") String ui);
 
     @POST("detect")
-    Call detect(@Field("key") String key, @Field("text") String text);
+    Call<SingleItemResponse> detect(@Query("key") String key, @Query("text") String text);
 
     @POST("translate")
-    Call translate(@Field("key") String key, @Field("text") String text, @Field("lang") String lang);
+    Call<SingleItemResponse> translate(@Query("key") String key, @Query("text") String text, @Query("lang") String lang);
 }
