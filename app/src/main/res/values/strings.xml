@@ -2,4 +2,8 @@
     <string name="app_name">Translator</string>
     <string name="translate">Перевести</string>
     <string name="yandex_sevice">«Переведено сервисом «Яндекс.Переводчик»</string>
+    <string name="dialog_title">Обновление данных</string>
+    <string name="dialog_message">Пожалуйста, подождите...</string>
+    <string name="delete_message">Действительно удалить хотите?</string>
+    <string name="empty_data_text">Нет подключения к сети Интернет.\nПроверьте подкдючение.</string>
 </resources>

@@ -24,7 +24,9 @@
 
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.andrey.translator.model.Lang" />
+            android:value="
+            com.andrey.translator.model.Lang,
+            com.andrey.translator.model.Favorite" />
     </application>
 
 </manifest>

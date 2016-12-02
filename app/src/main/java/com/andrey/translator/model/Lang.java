@@ -60,4 +60,7 @@ public class Lang extends Model {
             return Collections.emptyList();
         }
     }
+    public static Lang getLangById(String langId){
+        return new Select().from(Lang.class).where("langId = ?",langId).executeSingle();
+    }
 }

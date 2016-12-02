@@ -7,115 +7,158 @@
     android:paddingBottom="@dimen/size_16"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
+        <RelativeLayout
+            android:id="@+id/emptyView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size_8">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/infotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/empty_data_text"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="@dimen/size_8">
 
-                <TextView
-                    android:id="@+id/from_lang"
-                    style="@style/LangChooser"
-                    android:clickable="true"
-                    android:gravity="left|center_vertical"
-                    android:paddingLeft="@dimen/size_16"
-                    tools:text="Русский" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/switch_lang"
-                    android:layout_width="@dimen/size_36"
-                    android:layout_height="@dimen/size_36"
-                    android:clickable="true"
-                    app:srcCompat="@drawable/ic_swap_horiz" />
+                    <TextView
+                        android:id="@+id/auto"
+                        style="@style/LangChooser"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:gravity="center"
+                        android:text="AUTO"
+                        android:textSize="8dp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/to_lang"
-                    style="@style/LangChooser"
-                    android:clickable="true"
-                    android:gravity="right|center_vertical"
-                    android:paddingRight="@dimen/size_16"
-                    tools:text="Английский" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/from_lang"
+                        style="@style/LangChooser"
+                        android:clickable="true"
+                        android:gravity="left|center_vertical"
+                        android:paddingLeft="@dimen/size_16"
+                        tools:text="Русский" />
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size_8">
+                    <ImageView
+                        android:id="@+id/switch_lang"
+                        android:layout_width="@dimen/size_36"
+                        android:layout_height="@dimen/size_36"
+                        android:clickable="true"
+                        app:srcCompat="@drawable/ic_swap_horiz" />
 
-            <LinearLayout
+                    <TextView
+                        android:id="@+id/to_lang"
+                        style="@style/LangChooser"
+                        android:clickable="true"
+                        android:gravity="right|center_vertical"
+                        android:paddingRight="@dimen/size_16"
+                        tools:text="Английский" />
+
+                    <ImageView
+                        android:id="@+id/favorite"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="0.3"
+                        android:paddingRight="8dp"
+                        app:srcCompat="@drawable/ic_favorite" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginBottom="@dimen/size_8">
 
-                <EditText
-                    android:id="@+id/input_text"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/input_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="top|left"
+                        android:minHeight="100dp"
+                        android:padding="@dimen/size_8"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        tools:text="Результат" />
+
+                    <Button
+                        android:id="@+id/translate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/flat_button_background"
+                        android:text="@string/translate"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimary" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/out_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_8"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/out_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:gravity="top|left"
                     android:minHeight="100dp"
                     android:padding="@dimen/size_8"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20dp"
-                    tools:text="Результат" />
+                    android:textStyle="bold"
+                    tools:text="Result" />
 
-                <Button
-                    android:id="@+id/translate"
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/yandex_service"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/flat_button_background"
-                    android:text="@string/translate"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+                    android:gravity="center"
+                    android:padding="@dimen/size_16"
+                    android:text="@string/yandex_sevice"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20dp" />
+            </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/out_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size_8"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/out_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="top|left"
-                android:minHeight="100dp"
-                android:padding="@dimen/size_8"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                tools:text="Result" />
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/yandex_service"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/size_16"
-                android:text="@string/yandex_sevice"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20dp" />
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 </android.support.v4.widget.NestedScrollView>
